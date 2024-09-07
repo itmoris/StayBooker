@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Ata Ibragimov
+      changes:
+        - createSequence:
+            schemaName: public
+            sequenceName: apartment_seq
+            startValue: 1
+            incrementBy: 1
+            dataType: BIGINT
+
+        - createTable:
+            tableName: apartment
+            schemaName: public
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  defaultValueSequenceNext: apartment_seq
+                  constraints:
+                    - primaryKey: true
+              - column:
+                  name: title
+                  type: VARCHAR(150)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: location
+                  type: VARCHAR(150)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: price
+                  type: VARCHAR(50)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: amenities
+                  type: VARCHAR(100)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: max_guests
+                  type: INT
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: image_url
+                  type: VARCHAR(500)
+                  constraints:
+                    - nullable: false

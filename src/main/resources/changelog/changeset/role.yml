@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Ata Ibragimov
+      changes:
+        - createSequence:
+            schemaName: public
+            sequenceName: role_seq
+            startValue: 1
+            incrementBy: 1
+            dataType: SMALLINT
+
+        - createTable:
+            tableName: role
+            schemaName: public
+            columns:
+              - column:
+                  name: id
+                  type: SMALLINT
+                  defaultValueSequenceNext: role_seq
+                  constraints:
+                    - primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(20)
+                  constraints:
+                    - unique: true
+                    - nullable: false
+
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: name
+                  value: USER
+
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: name
+                  value: ADMIN

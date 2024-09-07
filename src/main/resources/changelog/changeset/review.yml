@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Ata Ibragimov
+      changes:
+        - createTable:
+            tableName: review
+            schemaName: public
+            columns:
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    - foreignKeyName: review_user_fk
+                    - referencedTableName: users
+                    - referencedColumnNames: id
+                    - nullable: false
+              - column:
+                  name: apartment_id
+                  type: BIGINT
+                  constraints:
+                    - foreignKeyName: review_apartment_fk
+                    - referencedTableName: apartment
+                    - referencedColumnNames: id
+                    - nullable: false
+              - column:
+                  name: review
+                  type: VARCHAR(1000)
+                  constraints:
+                    - nullable: false
+
+        - addPrimaryKey:
+            tableName: review
+            schemaName: public
+            columnNames: user_id, apartment_id
+

@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - include:
+      file: changeset/role.yml
+  - include:
+      file: changeset/user.yml
+  - include:
+      file: changeset/apartment.yml
+  - include:
+      file: changeset/review.yml
+  - include:
+      file: changeset/reservation.yml

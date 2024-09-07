@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Ata Ibragimov
+      changes:
+        - createTable:
+            tableName: reservation
+            schemaName: public
+            columns:
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    - foreignKeyName: reservation_user_fk
+                    - referencedTableName: users
+                    - referencedColumnNames: id
+                    - nullable: false
+              - column:
+                  name: apartment_id
+                  type: BIGINT
+                  constraints:
+                    - foreignKeyName: reservation_apartment_fk
+                    - referencedTableName: apartment
+                    - referencedColumnNames: id
+                    - nullable: false
+              - column:
+                  name: check_in
+                  type: DATE
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: check_out
+                  type: DATE
+                  constraints:
+                    - checkConstraint: "CHECK (check_out &gt; check_in)" # todo: don`t work, fix it
+                    - nullable: false
+              - column:
+                  name: guests
+                  type: INT
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: special_requests
+                  type: VARCHAR(500)
+
+        - addPrimaryKey:
+            tableName: reservation
+            schemaName: public
+            columnNames: user_id, apartment_id

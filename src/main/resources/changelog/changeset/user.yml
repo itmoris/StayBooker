@@ -1,0 +1,48 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Ata Ibragimov
+      changes:
+        - createSequence:
+            schemaName: public
+            sequenceName: users_seq
+            startValue: 1
+            incrementBy: 1
+            dataType: BIGINT
+
+        - createTable:
+            tableName: users
+            schemaName: public
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  defaultValueSequenceNext: users_seq
+                  constraints:
+                    - primaryKey: true
+              - column:
+                  name: fullname
+                  type: VARCHAR(100)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(100)
+                  constraints:
+                    - unique: true
+                    - nullable: false
+              - column:
+                  name: password
+                  type: VARCHAR(500)
+                  constraints:
+                    - unique: false
+                    - nullable: false
+              - column:
+                  name: role
+                  type: INT
+                  defaultValue: 1
+                  constraints:
+                    - foreignKeyName: users_role_fk
+                    - referencedTableName: role
+                    - referencedColumnNames: id
+                    - nullable: false
