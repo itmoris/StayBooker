@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 @WebServlet("/static/*")
 public class StaticServlet extends HttpServlet {
     private static final Pattern staticPattern = Pattern.compile(".*/static/(\\w+)/(.*)");
+    private static final ClassLoader classLoader = StaticServlet.class.getClassLoader();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,16 +24,11 @@ public class StaticServlet extends HttpServlet {
         if (matcher.matches()) {
             String folder = matcher.group(1);
             String filename = matcher.group(2);
-            System.out.println(folder + "/" + filename);
+            String staticPath = PathUtil.getStaticPage(folder, filename);
 
-            ClassLoader classLoader = StaticServlet.class.getClassLoader();
-            System.out.println(classLoader);
-
-            try (InputStream resourceAsStream = classLoader.getResourceAsStream(PathUtil.getStaticPage(folder, filename))) {
-                System.out.println(resourceAsStream);
-                if (resourceAsStream != null) {
-                    System.out.println(resourceAsStream.available());
-                    resourceAsStream.transferTo(resp.getOutputStream());
+            try(InputStream is = classLoader.getResourceAsStream(staticPath)) {
+                if (is != null) {
+                    is.transferTo(resp.getOutputStream());
                     return;
                 }
             }
