@@ -3,7 +3,7 @@ package com.staybooker.servlet;
 import com.staybooker.dto.UserAuthenticateDto;
 import com.staybooker.exception.AuthenticateException;
 import com.staybooker.service.UserService;
-import com.staybooker.util.JspUtil;
+import com.staybooker.util.PathUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher(JspUtil.getPage("login.jsp")).forward(req, resp);
+        req.getRequestDispatcher(PathUtil.getJspPage("login.jsp")).forward(req, resp);
     }
 
     @Override

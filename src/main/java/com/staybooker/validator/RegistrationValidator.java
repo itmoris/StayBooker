@@ -2,8 +2,14 @@ package com.staybooker.validator;
 
 import com.staybooker.dto.UserRegistrationDto;
 import com.staybooker.exception.ValidationException;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RegistrationValidator implements Validator<UserRegistrationDto> {
+    @Getter
+    private static final RegistrationValidator INSTANCE = new RegistrationValidator();
 
     @Override
     public void validate(UserRegistrationDto dto) throws ValidationException {

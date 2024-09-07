@@ -1,8 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
-<jsp:useBean id="apartments" scope="request" type="java.util.List"/>
+
+
 <fmt:parseNumber var="page" integerOnly="true" type="number" value="${requestScope.currentPage}"/>
 <fmt:parseNumber var="lastPage" integerOnly="true" type="number" value="${requestScope.lastPage}"/>
+<c:set var="apartments" scope="request" value="${requestScope.apartments}"/>
+<c:set var="hasError" scope="request" value="${requestScope.hasError}"/>
+<c:set var="error" scope="request" value="${requestScope.error}"/>
+<c:set var="errorField" scope="request" value="${requestScope.errorField}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StayBooker - Home</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main.css">
 </head>
 <body>
 
@@ -19,11 +24,27 @@
 
 <div class="container mt-5">
     <h1 class="text-center">Find Your Perfect Stay</h1>
-    <form method="GET" action="${pageContext.request.contextPath}/?page=${page}" class="form-inline justify-content-center mt-4">
-        <input type="text" class="form-control mb-2 mr-sm-2" name="city" placeholder="City" value="${param.city}">
-        <input type="date" class="form-control mb-2 mr-sm-2" name="checkIn" value="${param.checkIn}">
-        <input type="date" class="form-control mb-2 mr-sm-2" name="checkOut" value="${param.checkOut}">
-        <input type="number" class="form-control mb-2 mr-sm-2" name="guests" placeholder="Guests" value="${param.guests}">
+    <form class="form-row justify-content-center mt-4">
+        <div class="form-group mb-2 mr-sm-2">
+            <input type="text" class="form-control" id="city" name="city" placeholder="City" value="${param.city}">
+            <div class="error-message" id="city-error" style="${hasError && errorField.equals("city") ? "display:block": ""}">${error}</div>
+        </div>
+
+        <div class="form-group mb-2 mr-sm-2">
+            <input type="date" class="form-control" id="checkin" name="checkIn" value="${param.checkIn}">
+            <div class="error-message" id="checkin-error" style="${hasError && errorField.equals("checkIn") ? "display:block": ""}">${error}</div>
+        </div>
+
+        <div class="form-group mb-2 mr-sm-2">
+            <input type="date" class="form-control" id="checkout" name="checkOut" value="${param.checkOut}">
+            <div class="error-message" id="checkout-error" style="${hasError && errorField.equals("checkOut") ? "display:block": ""}">${error}</div>
+        </div>
+
+        <div class="form-group mb-2 mr-sm-2">
+            <input type="number" class="form-control" id="guests" name="guests" placeholder="Guests" value="${param.guests}">
+            <div class="error-message" id="guests-error" style="${hasError && errorField.equals("guests") ? "display:block": ""}">${error}</div>
+        </div>
+
         <button type="submit" class="btn btn-primary mb-2">Search</button>
     </form>
 </div>
@@ -54,7 +75,7 @@
                 <a class="page-link" href="${pageContext.request.contextPath}/?page=${page-1}" tabindex="-1">Previous</a>
             </li>
 
-            <c:forEach var="p" begin="${page}" end="${lastPage}">
+            <c:forEach var="p" begin="1" end="${lastPage}">
                 <c:if test="${p<=lastPage && p<=4}">
                     <li class="page-item ${p==page ? "active disabled" : ""}"><a class="page-link" href="${pageContext.request.contextPath}/?page=${p}">${p}</a></li>
                 </c:if>
