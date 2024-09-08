@@ -2,14 +2,15 @@ package com.staybooker.validator;
 
 import com.staybooker.dto.ApartmentFilterDto;
 import com.staybooker.exception.ValidationException;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+import static lombok.AccessLevel.PRIVATE;
+
+@NoArgsConstructor(access = PRIVATE)
 public class ApartmentFilterValidator implements Validator<ApartmentFilterDto> {
     @Getter
     private static final ApartmentFilterValidator INSTANCE = new ApartmentFilterValidator();
