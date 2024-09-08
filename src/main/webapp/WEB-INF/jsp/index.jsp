@@ -76,7 +76,7 @@
             </li>
 
             <c:forEach var="p" begin="1" end="${lastPage}">
-                <c:if test="${p<=lastPage && p<=4}">
+                <c:if test="${p<=lastPage}">
                     <li class="page-item ${p==page ? "active disabled" : ""}"><a class="page-link" href="${pageContext.request.contextPath}/?page=${p}">${p}</a></li>
                 </c:if>
             </c:forEach>
