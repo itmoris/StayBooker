@@ -1,4 +1,4 @@
-package com.staybooker.dto;
+package com.staybooker.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

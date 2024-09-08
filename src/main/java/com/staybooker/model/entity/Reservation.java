@@ -1,11 +1,9 @@
-package com.staybooker.entity;
+package com.staybooker.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter

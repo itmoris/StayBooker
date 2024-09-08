@@ -1,5 +1,8 @@
 package com.staybooker.util;
 
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 public class PathUtil {
     private static final String JSP_PATH = "WEB-INF/jsp/";
     private static final String STATIC_PATH = "static";

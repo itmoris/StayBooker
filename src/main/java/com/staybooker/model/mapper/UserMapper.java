@@ -1,9 +1,9 @@
-package com.staybooker.mapper;
+package com.staybooker.model.mapper;
 
-import com.staybooker.dto.UserAuthenticateDto;
-import com.staybooker.dto.UserDto;
-import com.staybooker.dto.UserRegistrationDto;
-import com.staybooker.entity.User;
+import com.staybooker.model.dto.UserAuthenticateDto;
+import com.staybooker.model.dto.UserDto;
+import com.staybooker.model.dto.UserRegistrationDto;
+import com.staybooker.model.entity.User;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.experimental.UtilityClass;
 

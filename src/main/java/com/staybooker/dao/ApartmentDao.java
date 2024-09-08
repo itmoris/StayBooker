@@ -1,10 +1,11 @@
 package com.staybooker.dao;
 
-import com.staybooker.dto.ApartmentFilterDto;
-import com.staybooker.entity.Apartment;
-import com.staybooker.entity.Reservation;
+import com.staybooker.model.dto.ApartmentFilterDto;
+import com.staybooker.model.entity.Apartment;
+import com.staybooker.model.entity.Reservation;
 import jakarta.persistence.criteria.JoinType;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.query.criteria.*;
 
@@ -15,14 +16,13 @@ import java.util.Objects;
 
 import static com.staybooker.util.TransactionUtil.executeWithResult;
 import static com.staybooker.util.TransactionUtil.executeWithoutResult;
+import static lombok.AccessLevel.PRIVATE;
 
 @Slf4j
+@NoArgsConstructor(access = PRIVATE)
 public class ApartmentDao implements Dao<Apartment, Long> {
     @Getter
     private static final ApartmentDao INSTANCE = new ApartmentDao();
-
-    private ApartmentDao() {
-    }
 
     @Override
     public Apartment getById(Long key) {

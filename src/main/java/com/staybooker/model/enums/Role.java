@@ -1,4 +1,4 @@
-package com.staybooker.entity;
+package com.staybooker.model.enums;
 
 import lombok.Getter;
 

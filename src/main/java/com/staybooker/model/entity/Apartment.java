@@ -1,4 +1,4 @@
-package com.staybooker.entity;
+package com.staybooker.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -39,11 +39,11 @@ public class Apartment {
 
     @Builder.Default
     @ToString.Exclude
-    @OneToMany(mappedBy = "apartment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "apartment", cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();
 
     @Builder.Default
     @ToString.Exclude
-    @OneToMany(mappedBy = "apartment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "apartment", cascade = CascadeType.ALL)
     private List<Reservation> reservations = new ArrayList<>();
 }

@@ -1,9 +1,9 @@
 package com.staybooker.util;
 
-import com.staybooker.entity.Apartment;
-import com.staybooker.entity.Reservation;
-import com.staybooker.entity.Review;
-import com.staybooker.entity.User;
+import com.staybooker.model.entity.Apartment;
+import com.staybooker.model.entity.Reservation;
+import com.staybooker.model.entity.Review;
+import com.staybooker.model.entity.User;
 import lombok.experimental.UtilityClass;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy;

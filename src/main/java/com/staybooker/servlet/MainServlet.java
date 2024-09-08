@@ -1,9 +1,9 @@
 package com.staybooker.servlet;
 
-import com.staybooker.dto.ApartmentBriefDto;
-import com.staybooker.dto.ApartmentFilterDto;
+import com.staybooker.model.dto.ApartmentBriefDto;
+import com.staybooker.model.dto.ApartmentFilterDto;
 import com.staybooker.exception.ValidationException;
-import com.staybooker.mapper.ApartmentMapper;
+import com.staybooker.model.mapper.ApartmentMapper;
 import com.staybooker.service.ApartmentService;
 import com.staybooker.util.PathUtil;
 import com.staybooker.validator.ApartmentFilterValidator;

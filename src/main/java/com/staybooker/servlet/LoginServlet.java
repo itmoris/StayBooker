@@ -1,6 +1,6 @@
 package com.staybooker.servlet;
 
-import com.staybooker.dto.UserAuthenticateDto;
+import com.staybooker.model.dto.UserAuthenticateDto;
 import com.staybooker.exception.AuthenticateException;
 import com.staybooker.exception.ValidationException;
 import com.staybooker.service.UserService;
@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 
-import static com.staybooker.mapper.UserMapper.toUserAuthenticateDto;
+import static com.staybooker.model.mapper.UserMapper.toUserAuthenticateDto;
 
 @Slf4j
 @WebServlet("/login")

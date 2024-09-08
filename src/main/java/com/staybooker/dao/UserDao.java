@@ -1,20 +1,19 @@
 package com.staybooker.dao;
 
-import com.staybooker.dto.ApartmentFilterDto;
-import com.staybooker.entity.User;
+import com.staybooker.model.entity.User;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 import static com.staybooker.util.TransactionUtil.executeWithResult;
 import static com.staybooker.util.TransactionUtil.executeWithoutResult;
+import static lombok.AccessLevel.PRIVATE;
 
+@NoArgsConstructor(access = PRIVATE)
 public class UserDao implements Dao<User, Long> {
     @Getter
     private static final UserDao INSTANCE = new UserDao();
-
-    private UserDao() {
-    }
 
     @Override
     public User getById(Long key) {

@@ -1,6 +1,7 @@
-package com.staybooker.entity;
+package com.staybooker.model.entity;
 
-import com.staybooker.converter.RoleConverter;
+import com.staybooker.model.converter.RoleConverter;
+import com.staybooker.model.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 

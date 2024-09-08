@@ -1,8 +1,8 @@
-package com.staybooker.mapper;
+package com.staybooker.model.mapper;
 
-import com.staybooker.dto.ApartmentBriefDto;
-import com.staybooker.dto.ApartmentFilterDto;
-import com.staybooker.entity.Apartment;
+import com.staybooker.model.dto.ApartmentBriefDto;
+import com.staybooker.model.dto.ApartmentFilterDto;
+import com.staybooker.model.entity.Apartment;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.experimental.UtilityClass;
 

@@ -1,6 +1,6 @@
 package com.staybooker.validator;
 
-import com.staybooker.dto.UserAuthenticateDto;
+import com.staybooker.model.dto.UserAuthenticateDto;
 import com.staybooker.exception.ValidationException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
